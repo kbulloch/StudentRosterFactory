@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="studentRoster">
-  <head>
-    <meta charset="UTF-8">
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
-    <script src="lib/angular.js"></script>
-    <script src="app.js"></script>
-    <script src="js/StudentsController.js"></script>
-    <title>Student App</title>
-  </head>
-  <body>
-    <div class="container" ng-controller="StudentsCtrl">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Student List</h2>
-          <ul>
-            <li ng-repeat="item in students">
-              {{item.name}} <button class="btn btn-warning" ng-click="deleteStudent(item)">Delete</button>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h2>New Student</h2>
-          <form ng-submit="addStudent()" class="form-inline" role="form">
-            <div class="form-group">
-              <input type="text" ng-model="studentName" class="form-control" placeholder="Enter Name" required>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <script src="lib/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="js/StudentsController.js"></script>
+  <title>Student App</title>
+</head>
+<body>
+  <div class="container" ng-controller="StudentsCtrl">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Student List</h2>
+        <ul>
+          <li ng-repeat="item in students">
+            <span ng-click="editing = true" ng-hide="editing" id="student">
+              {{item.name}} <button class="btn btn-danger btn-sm" ng-click="deleteStudent(item)">Delete</button>
+            </span>
+            <span class="form-group" ng-show="editing" ng-submit="editing = false">
+              <form class="form-inline" role="form">
+                <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="Name" required>
+                <button type="submit" class="btn btn-default btn-sm">Save</button>
+              </form>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h2>New Student</h2>
+        <form ng-submit="addStudent()" class="form-inline" role="form">
+          <div class="form-group">
+            <input type="text" ng-model="studentName" class="form-control" placeholder="Enter Name" required>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>

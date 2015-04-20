@@ -1,1 +1,1 @@
-var appName = angular.module('appName', []);
+var studentRoster = angular.module('studentRoster', []);

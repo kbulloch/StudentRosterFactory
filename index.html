@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="appName">
+<html lang="en" ng-app="studentRoster">
   <head>
     <meta charset="UTF-8">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="lib/angular.js"></script>
     <script src="app.js"></script>
-    <!-- // <script src="js/ControllerName.js"></script> -->
-    <title></title>
+    <script src="js/StudentsController.js"></script>
+    <title>Student App</title>
   </head>
   <body>
-
+    <div class="container" ng-controller="StudentsCtrl">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Student List</h2>
+          <ul>
+            <li ng-repeat="item in students">
+              {{item.name}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
